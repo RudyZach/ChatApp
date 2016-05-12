@@ -30,8 +30,6 @@ io.on('connection', function (socket) {
         username: 'ADMIN',
         message: "THESE ARE THE HELP COMMANDS"
       });
-    } elseif (msg.substr(0) === '/users') {
-
     } else {
       socket.broadcast.emit('new message', {
         username: socket.username,
