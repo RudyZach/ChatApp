@@ -55,7 +55,7 @@ $(function() {
 
   // Sends a chat message
   function sendMessage () {
-  
+
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
@@ -181,14 +181,19 @@ $(function() {
 
   // Gets the color of a username through our hash function
   function getUsernameColor (username) {
-    // Compute hash code
-    var hash = 7;
-    for (var i = 0; i < username.length; i++) {
-       hash = username.charCodeAt(i) + (hash << 5) - hash;
+    if (username === 'ADMIN') {
+      return COLORS[0];
+    } else {
+      // Compute hash code
+      var hash = 7;
+      for (var i = 0; i < username.length; i++) {
+         hash = username.charCodeAt(i) + (hash << 5) - hash;
+      }
+      // Calculate color
+      var index = Math.abs(hash % COLORS.length);
+      return COLORS[index];
     }
-    // Calculate color
-    var index = Math.abs(hash % COLORS.length);
-    return COLORS[index];
+
   }
 
   // Keyboard events

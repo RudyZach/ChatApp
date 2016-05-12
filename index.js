@@ -25,7 +25,7 @@ io.on('connection', function (socket) {
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
     var msg = data.trim();
-    if (msg.substr(0) == '/help') {
+    if (msg.substr(0) === '/help') {
       socket.broadcast.emit('new message', {
         username: 'ADMIN',
         message: "THESE ARE THE HELP COMMANDS"
