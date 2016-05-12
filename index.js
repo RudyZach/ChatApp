@@ -22,10 +22,20 @@ io.on('connection', function (socket) {
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
+    var msg = data.trim();
+    if (msg.substr(0,5) === '/help') {
+      socket.broadcast.emit('new message', {
+        username: 'ADMIN',
+        message: "THESE ARE THE HELP COMMANDS"
+      });
+    } else {
+      socket.broadcast.emit('new message', {
+        username: socket.username,
+        message: msg
+      });
+    }
+
+
   });
 
   // when the client emits 'add user', this listens and executes

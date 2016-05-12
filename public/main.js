@@ -20,6 +20,7 @@ $(function() {
   var username;
   var connected = false;
   var typing = false;
+  var canSend = true;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
@@ -43,6 +44,7 @@ $(function() {
     if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
+
       $loginPage.off('click');
       $currentInput = $inputMessage.focus();
 
@@ -53,6 +55,7 @@ $(function() {
 
   // Sends a chat message
   function sendMessage () {
+  
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
