@@ -50,8 +50,6 @@ io.on('connection', function (socket) {
     socket.username = username;
     ++numUsers;
     addedUser = true;
-    users.push(username);
-    console.log(users);
     socket.emit('login', {
       numUsers: numUsers
     });
