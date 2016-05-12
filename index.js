@@ -30,6 +30,8 @@ io.on('connection', function (socket) {
         username: 'ADMIN',
         message: "THESE ARE THE HELP COMMANDS"
       });
+    } elseif (msg.substr(0) === '/users') {
+
     } else {
       socket.broadcast.emit('new message', {
         username: socket.username,
@@ -48,6 +50,8 @@ io.on('connection', function (socket) {
     socket.username = username;
     ++numUsers;
     addedUser = true;
+    users.push(username);
+    console.log(users);
     socket.emit('login', {
       numUsers: numUsers
     });
