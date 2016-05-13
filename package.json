@@ -1,7 +1,7 @@
 {
   "name": "ZachChat",
-  "version": "0.0.0",
-  "description": "A simple chat client using socket.io",
+  "version": "0.0.1",
+  "description": "A chat room created by Zach Rudy and Ben Allen, using socket.io, node.js and heroku",
   "main": "index.js",
   "author": "Zach Rudy and Ben Allen",
   "private": true,
