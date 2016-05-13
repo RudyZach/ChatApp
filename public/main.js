@@ -59,6 +59,8 @@ $(function() {
     for (i = 1; i < users.length; i++) {
       ans += ', ' + users[i];
     }
+
+    return ans;
   }
 
   // Sends a chat message
