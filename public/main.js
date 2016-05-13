@@ -73,7 +73,7 @@ $(function() {
         $inputMessage.val('');
         addChatMessage({
           username: 'ADMIN',
-          message: 'Connected users are: ' + stringifyUsers();
+          message: 'Connected users are: ';// + stringifyUsers();
         });
     } else {
       // if there is a non-empty message and a socket connection
