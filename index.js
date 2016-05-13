@@ -25,22 +25,11 @@ io.on('connection', function (socket) {
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
     var msg = data.trim();
-    if (msg.substr(0) === '/help') {
-      socket.emit('new message', {
-        username: 'ADMIN',
-        message: "/users - lists all users online (more commands to be added eventually...)"
-      });
-    } else if (msg.substr(0) === '/users') {
-      socket.emit('new message', {
-        username: 'ADMIN',
-        message: "The current users are: "
-      });
-    } else {
-      socket.broadcast.emit('new message', {
+    socket.broadcast.emit('new message', {
         username: socket.username,
         message: msg
       });
-    }
+
 
 
   });

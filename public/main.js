@@ -54,6 +54,7 @@ $(function() {
     }
   }
   //returns a string of all the users
+  /*
   function stringifyUsers() {
     var ans = users[0];
     for (i = 1; i < users.length; i++) {
@@ -62,7 +63,7 @@ $(function() {
 
     return ans;
   }
-
+  */
   // Sends a chat message
   function sendMessage () {
 
