@@ -23,6 +23,7 @@ $(function() {
   var canSend = true;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
+  var users[];
 
   var socket = io();
 
@@ -252,6 +253,7 @@ $(function() {
   // Whenever the server emits 'user joined', log it in the chat body
   socket.on('user joined', function (data) {
     log(data.username + ' joined');
+    users.push(data.username);
     addParticipantsMessage(data);
   });
 
@@ -259,6 +261,7 @@ $(function() {
   socket.on('user left', function (data) {
     log(data.username + ' left');
     addParticipantsMessage(data);
+    users.splice(users.indexOf(data.username), 1);
     removeChatTyping(data);
   });
 
