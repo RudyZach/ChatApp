@@ -30,7 +30,7 @@ io.on('connection', function (socket) {
         username: 'ADMIN',
         message: "/users - lists all users online (more commands to be added eventually...)"
       });
-    } elseif (msg.substr(0) === '/users') {
+    } else if (msg.substr(0) === '/users') {
       socket.emit('new message', {
         username: 'ADMIN',
         message: "The current users are: "
