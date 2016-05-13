@@ -53,6 +53,13 @@ $(function() {
       socket.emit('add user', username);
     }
   }
+  //returns a string of all the users
+  function stringifyUsers() {
+    var ans = users[0];
+    for (i = 1; i < users.length; i++) {
+      ans += ', ' + users[i];
+    }
+  }
 
   // Sends a chat message
   function sendMessage () {
@@ -60,16 +67,25 @@ $(function() {
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
-    // if there is a non-empty message and a socket connection
-    if (message && connected) {
-      $inputMessage.val('');
-      addChatMessage({
-        username: username,
-        message: message
-      });
-      // tell server to execute 'new message' and send along one parameter
-      socket.emit('new message', message);
+    if (message.substr(0) === '/users') {
+        $inputMessage.val('');
+        addChatMessage({
+          username: 'ADMIN',
+          message: 'Connected users are: ' + stringifyUsers();
+        });
+    } else {
+      // if there is a non-empty message and a socket connection
+      if (message && connected) {
+        $inputMessage.val('');
+        addChatMessage({
+          username: username,
+          message: message
+        });
+        // tell server to execute 'new message' and send along one parameter
+        socket.emit('new message', message);
+      }
     }
+
   }
 
   // Log a message
