@@ -5,8 +5,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 
-var users = [];
-
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
 });
@@ -28,7 +26,7 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('new message', {
         username: socket.username,
         message: msg
-      });
+    });
 
 
 

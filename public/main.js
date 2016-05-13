@@ -23,7 +23,7 @@ $(function() {
   var canSend = true;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
-  var users = ['ADMIN'];
+  var users = [];
 
   var socket = io();
 
