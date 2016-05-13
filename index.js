@@ -28,7 +28,7 @@ io.on('connection', function (socket) {
     if (msg.substr(0) === '/help') {
       socket.emit('new message', {
         username: 'ADMIN',
-        message: "THESE ARE THE HELP COMMANDS"
+        message: "THESE ARE THE HELP COMMANDS \n /users - lists all users online \n"
       });
     } else {
       socket.broadcast.emit('new message', {
