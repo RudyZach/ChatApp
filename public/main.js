@@ -41,7 +41,7 @@ $(function() {
     username = cleanInput($usernameInput.val().trim());
 
     // If the username is valid
-    if (username) {
+    //if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
 
@@ -50,7 +50,7 @@ $(function() {
 
       // Tell the server your username
       socket.emit('add user', username);
-    }
+    //}
   }
   //returns a string of all the users
   /*
