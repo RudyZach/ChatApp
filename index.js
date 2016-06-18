@@ -33,12 +33,11 @@ io.on('connection', function (socket) {
 
   // when the client emits 'add user', this listens and executes
   socket.on('add user', function (username) {
-    if (addedUser) return;
+    //if (addedUser) return;
 
     // we store the username in the socket session for this client
     socket.username = username;
     addedUser = true;
-    ++numUsers
     socket.emit('login', {
       numUsers: numUsers
     });
