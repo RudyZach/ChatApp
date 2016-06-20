@@ -19,6 +19,7 @@ $(function() {
   // Prompt for setting a username
   var username;
   var connected = false;
+
   var typing = false;
   var canSend = true;
   var lastTypingTime;
