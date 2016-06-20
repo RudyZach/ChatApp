@@ -60,13 +60,6 @@ $(function() {
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
-    if (message.substr(0) === '/') {
-        $inputMessage.val('');
-        addChatMessage({
-          username: 'ADMIN',
-          message: 'Connected users are: ';// + stringifyUsers();
-        });
-    } else {
       // if there is a non-empty message and a socket connection
       if (message && connected) {
         $inputMessage.val('');
@@ -77,7 +70,6 @@ $(function() {
         // tell server to execute 'new message' and send along one parameter
         socket.emit('new message', message);
       }
-    }
 
   }
 
