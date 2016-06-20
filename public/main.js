@@ -52,24 +52,14 @@ $(function() {
       socket.emit('add user', username);
     }
   }
-  //returns a string of all the users
-  /*
-  function stringifyUsers() {
-    var ans = users[0];
-    for (i = 1; i < users.length; i++) {
-      ans += ', ' + users[i];
-    }
 
-    return ans;
-  }
-  */
   // Sends a chat message
   function sendMessage () {
 
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
-    if (message.substr(0) === '/users') {
+    if (message.substr(0) === '/') {
         $inputMessage.val('');
         addChatMessage({
           username: 'ADMIN',
