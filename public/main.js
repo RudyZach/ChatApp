@@ -19,9 +19,7 @@ $(function() {
   // Prompt for setting a username
   var username;
   var connected = false;
-
   var typing = false;
-  var canSend = true;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
@@ -45,7 +43,6 @@ $(function() {
     if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
-
       $loginPage.off('click');
       $currentInput = $inputMessage.focus();
 
@@ -56,21 +53,19 @@ $(function() {
 
   // Sends a chat message
   function sendMessage () {
-
     var message = $inputMessage.val();
     // Prevent markup from being injected into the message
     message = cleanInput(message);
-      // if there is a non-empty message and a socket connection
-      if (message && connected) {
-        $inputMessage.val('');
-        addChatMessage({
-          username: username,
-          message: message
-        });
-        // tell server to execute 'new message' and send along one parameter
-        socket.emit('new message', message);
-      }
-
+    // if there is a non-empty message and a socket connection
+    if (message && connected) {
+      $inputMessage.val('');
+      addChatMessage({
+        username: username,
+        message: message
+      });
+      // tell server to execute 'new message' and send along one parameter
+      socket.emit('new message', message);
+    }
   }
 
   // Log a message
@@ -183,19 +178,14 @@ $(function() {
 
   // Gets the color of a username through our hash function
   function getUsernameColor (username) {
-    if (username === 'ADMIN') {
-      return COLORS[0];
-    } else {
-      // Compute hash code
-      var hash = 7;
-      for (var i = 0; i < username.length; i++) {
-         hash = username.charCodeAt(i) + (hash << 5) - hash;
-      }
-      // Calculate color
-      var index = Math.abs(hash % COLORS.length);
-      return COLORS[index];
+    // Compute hash code
+    var hash = 7;
+    for (var i = 0; i < username.length; i++) {
+       hash = username.charCodeAt(i) + (hash << 5) - hash;
     }
-
+    // Calculate color
+    var index = Math.abs(hash % COLORS.length);
+    return COLORS[index];
   }
 
   // Keyboard events
@@ -239,7 +229,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Zach and Ben's chatroom – ";
+    var message = "Welcome to Socket.IO Chat – ";
     log(message, {
       prepend: true
     });
